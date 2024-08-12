@@ -60,6 +60,8 @@ services:
       interval: 1s
       timeout: 5s
       retries: 120
+    networks:
+      - esnet
 
   es01:
     container_name: es01
@@ -106,6 +108,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+    networks:
+      - esnet
 
   es02:
     container_name: es02
@@ -148,6 +152,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+    networks:
+      - esnet
 
   es03:
     container_name: es03
@@ -188,6 +194,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+    networks:
+      - esnet
 
   kibana:
     container_name: kibana
@@ -220,6 +228,8 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+    networks:
+      - esnet
   
   nginx:
     container_name: nginx
@@ -235,6 +245,8 @@ services:
       - nginx-snippets:/snippets:ro
     environment:
       TZ: 'Europe/Berlin'
+    networks:
+      - esnet
 
 volumes:
   certs:
