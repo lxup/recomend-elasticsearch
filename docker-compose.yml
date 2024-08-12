@@ -239,17 +239,29 @@ services:
 volumes:
   certs:
     driver: local
+    name: certs
   esdata01:
     driver: local
+    name: esdata01
   esdata02:
     driver: local
+    name: esdata02
   esdata03:
     driver: local
+    name: esdata03
   kibanadata:
     driver: local
+    name: kibanadata
   nginx-data:
     driver: local
+    name: nginx-data
   nginx-letsencrypt:
     driver: local
+    name: nginx-letsencrypt
   nginx-snippets:
     driver: local
+    name: nginx-snippets
+
+networks:
+  esnet:
+    driver: bridge
