@@ -231,22 +231,22 @@ services:
     networks:
       - esnet
   
-  # nginx:
-  #   container_name: nginx
-  #   image: 'jc21/nginx-proxy-manager:latest'
-  #   restart: unless-stopped
-  #   ports:
-  #     - '80:80'  # HTTP
-  #     - '443:443' # HTTPS
-  #     - '81:81'  # Admin Web Port
-  #   volumes:
-  #     - nginx-data:/data
-  #     - nginx-letsencrypt:/etc/letsencrypt
-  #     - nginx-snippets:/snippets:ro
-  #   environment:
-  #     TZ: 'Europe/Berlin'
-  #   networks:
-  #     - esnet
+  nginx:
+    container_name: nginx
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'  # HTTP
+      - '443:443' # HTTPS
+      - '81:81'  # Admin Web Port
+    volumes:
+      - nginx-data:/data
+      - nginx-letsencrypt:/etc/letsencrypt
+      - nginx-snippets:/snippets:ro
+    environment:
+      TZ: 'Europe/Berlin'
+    networks:
+      - esnet
 
 volumes:
   certs:
@@ -264,15 +264,15 @@ volumes:
   kibanadata:
     driver: local
     name: kibanadata
-  # nginx-data:
-  #   driver: local
-  #   name: nginx-data
-  # nginx-letsencrypt:
-  #   driver: local
-  #   name: nginx-letsencrypt
-  # nginx-snippets:
-  #   driver: local
-  #   name: nginx-snippets
+  nginx-data:
+    driver: local
+    name: nginx-data
+  nginx-letsencrypt:
+    driver: local
+    name: nginx-letsencrypt
+  nginx-snippets:
+    driver: local
+    name: nginx-snippets
 
 networks:
   esnet:
