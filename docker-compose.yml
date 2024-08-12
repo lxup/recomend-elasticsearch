@@ -220,6 +220,21 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+  
+  nginx:
+    container_name: nginx
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'  # HTTP
+      - '443:443' # HTTPS
+      - '81:81'  # Admin Web Port
+    volumes:
+      - nginx-data:/data
+      - nginx-letsencrypt:/etc/letsencrypt
+      - nginx-snippets:/snippets:ro
+    environment:
+      TZ: 'Europe/Berlin'
 
 volumes:
   certs:
@@ -231,4 +246,10 @@ volumes:
   esdata03:
     driver: local
   kibanadata:
+    driver: local
+  nginx-data:
+    driver: local
+  nginx-letsencrypt:
+    driver: local
+  nginx-snippets:
     driver: local
