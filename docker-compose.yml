@@ -277,3 +277,4 @@ volumes:
 networks:
   esnet:
     driver: bridge
+    name: esnet
