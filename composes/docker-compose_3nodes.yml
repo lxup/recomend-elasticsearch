@@ -223,6 +223,7 @@ services:
       - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
       - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
       - ENTERPRISESEARCH_HOST=http://enterprisesearch:${ENTERPRISE_SEARCH_PORT}
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     mem_limit: ${KB_MEM_LIMIT}
     healthcheck:
       test:
@@ -262,7 +263,9 @@ services:
       - elasticsearch.password=${ELASTIC_PASSWORD}
       - elasticsearch.ssl.enabled=true
       - elasticsearch.ssl.certificate_authority=/usr/share/enterprise-search/config/certs/ca/ca.crt
+      - kibana.host=http://kibana:5601
       - kibana.external_url=http://kibana:5601
+      - "JAVA_OPTS=-Xms1g -Xmx1g"
     mem_limit: ${AP_MEM_LIMIT}
     healthcheck:
       test:
